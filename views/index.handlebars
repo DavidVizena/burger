@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-sm-6" id="burgersDisplay">
+        <div class="card mb-1">
+            <div class="card-body p-1">
+                {{#each burgers}} {{#unless this.devoured}}
+                <div class="listItem p-2">
+                    <form class="devourForm" action="/{{this.id}}?_method=PUT" method="POST">
+                        <span class="available">{{this.id}}. {{this.burger_name}}</span>
+                        <button type="submit" class="btn btn-primary btn-sm float-right">Devour Burger</button>
+                    </form>
+                </div>
+                {{/unless}} {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6" id="devouredDisplay">
+        <div class="card mb-1">
+            <div class="card-body p-1">
+                <ul class="list-group">
+                    {{#each burgers}} {{#if this.devoured}}
+                    <li class="list-group-item devouredLi">
+                        <div class="devouredDiv">
+                            <span class="devoured">{{this.id}}. {{this.burger_name}}</span>
+                        </div>
+                    </li>
+                    {{/if}} {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
